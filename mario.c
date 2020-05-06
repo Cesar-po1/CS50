@@ -12,7 +12,7 @@ int main(void)
 
     for(int i = 0; i < height ; i++)  //loop for lines
     {
-        for(int j = height; j > -1 ; j--)  // loop for columns left side
+        for(int j = height-1; j > -1 ; j--)  // loop for columns left side
         {
             if (i < j)
             {
