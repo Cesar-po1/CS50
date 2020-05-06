@@ -28,11 +28,7 @@ int main(void)
         }
         for(int j = 0; j < height ; j++)   // loops for columns right side
         {
-            if (i < j)
-            {
-                printf(" ");
-            }
-            else
+            if (i >= j)
             {
                 printf("#");
             }
