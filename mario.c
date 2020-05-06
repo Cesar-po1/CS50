@@ -10,9 +10,9 @@ int main(void)
     }
     while (height < 1 || height > 8);  //repeat if height is not between 1 and 8
 
-    for(int i = 0; i < height ; i++)  //loop for lines
+    for (int i = 0; i < height ; i++)  //loop for lines
     {
-        for(int j = height-1; j > -1 ; j--)  // loop for columns left side
+        for (int j = height - 1; j > -1 ; j--)  //loop for columns left side
         {
             if (i < j)
             {
@@ -26,7 +26,7 @@ int main(void)
         {
             printf("  ");  //space between each side
         }
-        for(int j = 0; j < height ; j++)   // loops for columns right side
+        for (int j = 0; j < height ; j++)   //loops for columns right side
         {
             if (i >= j)
             {
