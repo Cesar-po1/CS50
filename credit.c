@@ -1,15 +1,19 @@
 #include <stdio.h>
 #include <cs50.h>
 #include <math.h>
+#include <stdlib.h>
 
 int main(void)
 {
     long card;
-    do
-    {
+
     card = get_long("What's your card number? \n");
+    
+    if (card < 1000000000000 || card > 10000000000000000 )
+    {
+        printf("INVALID\n");
+        void exit(int status);
     }
-    while (card < 1000000000000 || card > 10000000000000000);
     
     long card_len = card;
     int lenght_card_number = 0;
@@ -44,8 +48,6 @@ int main(void)
     sum1 += (digit14 % 10) + (digit14 % 100)/10;
     
     sum1 += (digit16 % 10) + (digit16 % 100)/10;
-
-    printf("%i \n",sum1);
     
     int digit1 = card % 10;
     int digit3 = (card % 1000) / 100 ;
@@ -60,11 +62,7 @@ int main(void)
     
     int sumTOT= sum1 + sum2;
     
-    printf("%i\n",sumTOT);
-    
     int card_start = card / pow(10,(lenght_card_number - 2));
-    
-    printf("%i\n",card_start);
     
     if ((sumTOT % 10) != 0)
     {
@@ -95,5 +93,4 @@ int main(void)
     {
         printf("INVALID\n");
     }
-    
 }
