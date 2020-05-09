@@ -12,7 +12,7 @@ int main(void)
     if (card < 1000000000000 || card > 10000000000000000 )
     {
         printf("INVALID\n");
-        void exit(int status);
+        exit(0);
     }
     
     long card_len = card;
@@ -67,6 +67,7 @@ int main(void)
     if ((sumTOT % 10) != 0)
     {
         printf("INVALID\n");
+        exit(0);
     }
     else if (card_start == 34 || card_start == 37)
     {
@@ -92,5 +93,6 @@ int main(void)
     else
     {
         printf("INVALID\n");
+        exit(0);
     }
 }
