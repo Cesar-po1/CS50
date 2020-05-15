@@ -37,16 +37,16 @@ int main (void)
     
     float S = ((cont_s / cont_w) * 100); //average number of sentences per 100 words in the text.
     
-    float grade = (0.0588 * L - 0.296 * S - 15.8); //Coleman-Liau formula
+    float g = (0.0588 * L - 0.296 * S - 15.8); //Coleman-Liau formula
     
-    int grade = round(grade)
+    int grade = round(g);
     if (grade >= 16)     // printer of grades
     {
         printf("Grade 16+\n");
     }
     else if (grade < 16 && grade >= 1)
     {
-        printf("Grade %.0f \n", grade);
+        printf("Grade %i \n", grade);
     }
     else if (grade < 1)
     {
