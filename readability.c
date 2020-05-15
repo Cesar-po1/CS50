@@ -39,13 +39,14 @@ int main (void)
     
     float grade = (0.0588 * L - 0.296 * S - 15.8); //Coleman-Liau formula
     
+    int grade = round(grade)
     if (grade >= 16)     // printer of grades
     {
         printf("Grade 16+\n");
     }
     else if (grade < 16 && grade >= 1)
     {
-        printf("Grade %.0f \n", round(grade));
+        printf("Grade %.0f \n", grade);
     }
     else if (grade < 1)
     {
