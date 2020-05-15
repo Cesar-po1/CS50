@@ -46,7 +46,7 @@ int main (void)
     }
     else if (grade < 16 && grade >= 1)
     {
-        printf("Grade %i \n", grade);
+        printf("Grade %i\n", grade);
     }
     else if (grade < 1)
     {
