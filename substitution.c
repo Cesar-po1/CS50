@@ -47,7 +47,7 @@ int main (int argc, string argv[]) //main
 
 int key (string argv[]) //validates key
 {
-    int lenght = 0;
+    int lenght = 1;
     
     for (int i = 0; argv[1][i] != '\0'; i++)
     {
