@@ -102,7 +102,7 @@ return 1;  //any other escenario
 string convertor (string text, string key[]) //function to cipher
 {
     int lenght = 0;
-    printf("");
+    //printf("");
     for (int i = 0; key[1][i] != '\0'; i++) //loop to check the lenght of the text to cipher
     {
         lenght ++;
@@ -112,7 +112,6 @@ string convertor (string text, string key[]) //function to cipher
     
     for (int i = 0; text[i] != '\0'; i++) //for to to change every letter of my text
     {
-        
         if (text[i] >= 'A' && text[i] <= 'Z')
         {
             encrypted[0][i] =key[1][text[i]-65]; //adds the ciphered letter to the sentence
@@ -122,10 +121,6 @@ string convertor (string text, string key[]) //function to cipher
             key[1][text[i]-97] = tolower(key[1][text[i]-97]); //converts the key to small to keep the same format
             encrypted[0][i] = key[1][text[i]-97]; //adds the ciphered letter to the sentence
         }
-        /*else if (text[i] == '\0')
-        {
-            encrypted[0][i] = '\0';
-        }*/
         else
         {
             encrypted[0][i] = text[i];  //does nothing to any non-alphabetic char
