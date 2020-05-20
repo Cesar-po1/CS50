@@ -129,6 +129,6 @@ string convertor (string text, string key[]) //function to cipher
         }
     }
     //printf("%s\n",encrypted[0]);
-    printf("Ciphertext: %s\n",encrypted[0]);
+    printf("ciphertext: %s\n",encrypted[0]);
     return 0;
 }
