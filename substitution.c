@@ -136,11 +136,11 @@ string convertor (string text, string key[]) //function to cipher
     printf("ciphertext: ");
     for (int i = 0;encrypted[0][i] != '\0';i++)
     {
-        printf("%i",i);
+        //printf("%i",i);
         if (encrypted[0][i] >= 0 && encrypted[0][i] <= 126)
         {
             
-            printf("%c\n",encrypted[0][i]);
+            printf("%c",encrypted[0][i]);
         }
         else
         {
