@@ -121,6 +121,10 @@ string convertor (string text, string key[]) //function to cipher
             key[1][text[i]-97] = tolower(key[1][text[i]-97]); //converts the key to small to keep the same format
             encrypted[0][i] = key[1][text[i]-97]; //adds the ciphered letter to the sentence
         }
+        else if (text[i] == '\0')
+        {
+            encrypted[0][i] = '\0';
+        }
         else
         {
             encrypted[0][i] = text[i];  //does nothing to any non-alphabetic char
