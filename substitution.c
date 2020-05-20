@@ -47,7 +47,7 @@ int main (int argc, string argv[]) //main
 
 int key (string argv[]) //validates key
 {
-    int lenght = 1;
+    int lenght = 0;
     
     for (int i = 0; argv[1][i] != '\0'; i++)
     {
@@ -101,7 +101,7 @@ return 1;  //any other escenario
 
 string convertor (string text, string key[]) //function to cipher
 {
-    int lenght = 0;
+    int lenght = 1;
     printf("");
     for (int i = 0; key[1][i] != '\0'; i++) //loop to check the lenght of the text to cipher
     {
