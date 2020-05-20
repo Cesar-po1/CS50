@@ -81,15 +81,15 @@ int key (string argv[]) //validates key
                 }
                 else if (argv[1][i] == argv[1][j+1]) //verifies if letter is repeted
                 {
-                    printf("Duplicaed\n");
                     return 1;  //finds duplicated letter
                 }
-                else
+                else if (argv[1][i] != argv[1][j+1])
                 {
-                    return 0;  //code works good! Your key is correct
+                      //code works good! Your key is correct
                 }
             }
         }
+        return 0;
     }
     else
     {
