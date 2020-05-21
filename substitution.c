@@ -2,10 +2,10 @@
 #include <cs50.h>
 #include <ctype.h>
 
-int key (string argv[]);
-string convertor (string text, string key[]); //declarations of functions
+int key(string argv[]);
+string convertor(string text, string key[]);  //declarations of functions
 
-int main (int argc, string argv[]) //main
+int main(int argc, string argv[])  //main
 {
     if (argc < 2) //if the program receives less than 2 arguments
     {
@@ -45,7 +45,7 @@ int main (int argc, string argv[]) //main
     }
 }
 
-int key (string argv[]) //validates key
+int key(string argv[])  //validates key
 {
     int lenght = 0;
     
@@ -73,20 +73,19 @@ int key (string argv[]) //validates key
         }
         for (int i = 0; argv[1][i] != '\0'; i++)
         {
-            for (int j = 0;argv[1][j] != '\0'; j++) //fors to verify no repeted letters
+            for (int j = 0; argv[1][j] != '\0'; j++) //fors to verify no repeted letters
             {
-                if (i == j+1)
+                if (i == j + 1)
                 {
                     break;  //same character doesnt cancel
                 }
-                else if (argv[1][i] == argv[1][j+1]) //verifies if letter is repeted
+                else if (argv[1][i] == argv[1][j + 1]) //verifies if letter is repeted
                 {
                     return 1;  //finds duplicated letter
                 }
-                else if (argv[1][i] != argv[1][j+1])
+                else if (argv[1][i] != argv[1][j + 1])
                 {
-                      //code works good! Your key is correct
-                }
+                }      //code works good! Your key is correct
             }
         }
         return 0; //correct
@@ -96,10 +95,10 @@ int key (string argv[]) //validates key
         printf("Lenght error\n");
         return 1;   //if lenght is not correct
     }
-return 1;  //any other escenario
+    return 1;  //any other escenario
 }
 
-string convertor (string text, string key[]) //function to cipher
+string convertor(string text, string key[])  //function to cipher
 {
     int lenght = 0;
     printf("");
@@ -115,20 +114,20 @@ string convertor (string text, string key[]) //function to cipher
     {
         if (text[i] >= 'A' && text[i] <= 'Z')
         {
-            key[1][text[i]-65] = toupper(key[1][text[i]-65]); //converts the key to capital to keep the same format
-            encrypted[0][i] =key[1][text[i]-65]; //adds the ciphered letter to the sentence
-            printf("%c",encrypted[0][i]);
+            key[1][text[i] - 65] = toupper(key[1][text[i] - 65]); //converts the key to capital to keep the same format
+            encrypted[0][i] = key[1][text[i] - 65]; //adds the ciphered letter to the sentence
+            printf("%c", encrypted[0][i]);
         }
         else if (text[i] >= 'a' && text[i] <= 'z') //checks if char of text is a small letter
         {
-            key[1][text[i]-97] = tolower(key[1][text[i]-97]); //converts the key to small to keep the same format
-            encrypted[0][i] = key[1][text[i]-97]; //adds the ciphered letter to the sentence
-            printf("%c",encrypted[0][i]);
+            key[1][text[i] - 97] = tolower(key[1][text[i] - 97]); //converts the key to small to keep the same format
+            encrypted[0][i] = key[1][text[i] - 97]; //adds the ciphered letter to the sentence
+            printf("%c", encrypted[0][i]);
         }
         else
         {
             encrypted[0][i] = text[i];  //does nothing to any non-alphabetic char
-            printf("%c",encrypted[0][i]);
+            printf("%c", encrypted[0][i]);
         }
     }
     printf("\n");
