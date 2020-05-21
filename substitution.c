@@ -57,7 +57,7 @@ int key (string argv[]) //validates key
             {  }
             else
             {
-                printf("Error en caracter\n");  //if the key has a non-alphabetic char
+                printf("Character error\n");  //if the key has a non-alphabetic char
                 return 1;
             }
         }
@@ -89,11 +89,11 @@ int key (string argv[]) //validates key
                 }
             }
         }
-        return 0;
+        return 0; //correct
     }
     else
     {
-        printf("Error en lenght\n");
+        printf("Lenght error\n");
         return 1;   //if lenght is not correct
     }
 return 1;  //any other escenario
@@ -115,10 +115,9 @@ string convertor (string text, string key[]) //function to cipher
     {
         if (text[i] >= 'A' && text[i] <= 'Z')
         {
-            key[1][text[i]-65] = toupper(key[1][text[i]-65]); //converts the key to small to keep the same format
+            key[1][text[i]-65] = toupper(key[1][text[i]-65]); //converts the key to capital to keep the same format
             encrypted[0][i] =key[1][text[i]-65]; //adds the ciphered letter to the sentence
             printf("%c",encrypted[0][i]);
-            
         }
         else if (text[i] >= 'a' && text[i] <= 'z') //checks if char of text is a small letter
         {
@@ -132,20 +131,6 @@ string convertor (string text, string key[]) //function to cipher
             printf("%c",encrypted[0][i]);
         }
     }
-
-    /*printf("ciphertext: ");
-    for (int i = 0;encrypted[0][i] != '\0';i++)
-    {
-        if (encrypted[0][i] >= 0 && encrypted[0][i] <= 126)
-        {
-            printf("%c",encrypted[0][i]);
-        }
-        else
-        {
-            break;
-        }
-    }
-    */
     printf("\n");
     return 0;
 }
