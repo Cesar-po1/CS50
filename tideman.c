@@ -72,7 +72,7 @@ int main(int argc, string argv[])
     {
         // ranks[i] is voter's ith preference
         int ranks[candidate_count];
-
+        
         // Query for each rank
         for (int j = 0; j < candidate_count; j++)
         {
@@ -84,7 +84,6 @@ int main(int argc, string argv[])
                 return 3;
             }
         }
-
         record_preferences(ranks);
 
         printf("\n");
@@ -102,17 +101,14 @@ bool vote(int rank, string name, int ranks[])
 {
     for (int i = 0; i < candidate_count; i++)
     {
+        printf("Alice %i\n",ranks[0]);
         if (strcmp(candidates[i], name) == 0)
         {
-            for (int j = 0; j < candidate_count; j++)
-            {
-                if (rank == j)
-                {
-                    ranks[j]=+1;
-                    
-                    return true;
-                }
-            }
+            ranks[i] = rank;
+            printf("Alice %i\n",ranks[0]);
+            printf("Bob %i\n",ranks[1]);
+            printf("Charlie %i\n",ranks[2]);
+            return true;
         }
     }
     return false;
