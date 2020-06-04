@@ -72,7 +72,7 @@ int main(int argc, string argv[])
     {
         // ranks[i] is voter's ith preference
         int ranks[candidate_count];
-        
+
         // Query for each rank
         for (int j = 0; j < candidate_count; j++)
         {
@@ -129,7 +129,20 @@ void record_preferences(int ranks[])
 // Record pairs of candidates where one is preferred over the other
 void add_pairs(void)
 {
-    // TODO
+    int counter = 0;
+    for (int i = 0; i < candidate_count; i++)
+    {
+        for (int j = 0; j < candidate_count; j++)
+        {
+            if (preferences[i][j] > preferences[j][i])
+            {
+                pairs[counter].winner += preferences[i][j];
+                pairs[counter].loser += preferences[j][i];
+                pair_count++;
+                counter++;
+            }
+        }
+    }
     return;
 }
 
