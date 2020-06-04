@@ -141,13 +141,6 @@ void add_pairs(void)
                 pair_count++;
                 counter++;
             }
-            else if (preferences[i][j] < preferences[j][i])
-            {
-                pairs[counter].loser += preferences[i][j];
-                pairs[counter].winner += preferences[j][i];
-                pair_count++;
-                counter++;
-            }
         }
     }
     return;
