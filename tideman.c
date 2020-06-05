@@ -119,7 +119,7 @@ void record_preferences(int ranks[])
         {
             if (i < j)
             {
-                preferences[ranks[i]][ranks[j]] += 1;
+                preferences[ranks[i]][ranks[j]] ++;
             }
         }
     }
@@ -136,8 +136,8 @@ void add_pairs(void)
         {
             if (preferences[i][j] > preferences[j][i])
             {
-                pairs[i].winner += preferences[i][j];
-                pairs[i].loser += preferences[j][i];
+                pairs[pair_count].winner = preferences[i][j];
+                pairs[pair_count].loser = preferences[j][i];
                 pair_count++;
             }
         }
