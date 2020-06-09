@@ -166,7 +166,7 @@ void sort_pairs(void)
         }
         else if (pairs[i].winner < pairs[i + 1].winner)
         {
-            pairs[i].winner = pairs[i + 1].winner;
+            pairs[i+1].winner = pairs[i].winner;
         }
         
         if (pairs[i].loser > pairs[i + 1].loser)
@@ -175,7 +175,7 @@ void sort_pairs(void)
         }
         else if (pairs[i].loser < pairs[i + 1].loser)
         {
-            pairs[i].loser = pairs[i + 1].loser;
+            pairs[i + 1].loser = pairs[i].loser;
         }
         
         printf("win%d\n",pairs[i].winner);
