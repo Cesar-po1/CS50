@@ -160,20 +160,20 @@ void sort_pairs(void)
 {
     for (int i = 0; i < pair_count; i++)
     {
-        if (pairs[i].winner > pairs[i + 1].winner)
+        if (pairs[i].winner < pairs[i + 1].winner)
         {
             pairs[i].winner = pairs[i].winner;
         }
-        else if (pairs[i].winner < pairs[i + 1].winner)
+        else if (pairs[i].winner > pairs[i + 1].winner)
         {
             pairs[i+1].winner = pairs[i].winner;
         }
         
-        if (pairs[i].loser > pairs[i + 1].loser)
+        if (pairs[i].loser < pairs[i + 1].loser)
         {
             pairs[i].loser = pairs[i].loser;
         }
-        else if (pairs[i].loser < pairs[i + 1].loser)
+        else if (pairs[i].loser > pairs[i + 1].loser)
         {
             pairs[i + 1].loser = pairs[i].loser;
         }
