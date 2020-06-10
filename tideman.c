@@ -135,10 +135,10 @@ void add_pairs(void)
     {
         for (int j = i + 1; j < candidate_count; j++)
         {
-            if (preferences[i][j] > preferences[j][i])
+            if (preferences[i][j] > preferences[j][i]) //cadidate prefered over other
             {
-                pairs[pair_count].winner = i;
-                pairs[pair_count].loser = j;
+                pairs[pair_count].winner = i; //cadidate winner
+                pairs[pair_count].loser = j; //candidate loser
                 pair_count++;
             }
             else if (preferences[i][j] < preferences[j][i])
@@ -167,10 +167,10 @@ void sort_pairs(void)
                     //this way i and j has now switched
                 {
                     temporary.winner = pairs[j].winner;
-                    temporary.loser = pairs[j].loser;
+                    temporary.loser = pairs[j].loser; //temporary, it checks again the place of this pair
                     pairs[j].winner = pairs[i].winner;
                     pairs[j].loser = pairs[i].loser;
-                    pairs[i].winner = temporary.winner;
+                    pairs[i].winner = temporary.winner; //asigns the temporary value
                     pairs[i].loser = temporary.loser;
                 }
             }
@@ -184,9 +184,9 @@ void lock_pairs(void)
 {
     for (int i = 0; i < pair_count; i++)
     {
-        if (!check_cycle(pairs[i].winner, pairs[i].loser))
+        if (!check_cycle(pairs[i].winner, pairs[i].loser)) //calls function to check cycle
         {
-            locked[pairs[i].winner][pairs[i].loser] = true;
+            locked[pairs[i].winner][pairs[i].loser] = true; //winner
         }
     }
     return;
@@ -210,7 +210,7 @@ void print_winner(void)
 
         if (source == true)
         {
-            printf("%s\n", candidates[i]);
+            printf("%s\n", candidates[i]); //prints winner/s
         }
     }
 
@@ -220,7 +220,7 @@ void print_winner(void)
 //checking for cycle
 bool check_cycle(int n, int m)
 {
-    if (locked[m][n] == true)
+    if (locked[m][n] == true) //found winner
     {
         return true;
     }
@@ -235,7 +235,7 @@ bool check_cycle(int n, int m)
             }
             else 
             {
-                return false;
+                return false; //no winner
             }
         }
     }
