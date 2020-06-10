@@ -138,18 +138,15 @@ void add_pairs(void)
             {
                 pairs[pair_count].winner = i;
                 pairs[pair_count].loser = j;
-                printf("L.P.%i\n",pairs[pair_count].loser);
-                printf("W.P.%i\n",pairs[pair_count].winner);
                 pair_count++;
             }
             else if (preferences[i][j] < preferences[j][i])
             {
                 pairs[pair_count].winner = j;
                 pairs[pair_count].loser = i;
-                printf("W.P.%i\n",pairs[pair_count].winner);
-                printf("L.P.%i\n",pairs[pair_count].loser);
                 pair_count++;
             }
+            printf("pairs %d / %d \n",pairs[pair_count-1].winner,pairs[pair_count-1].loser );
         }
     }
     return;
@@ -158,29 +155,31 @@ void add_pairs(void)
 // Sort pairs in decreasing order by strength of victory
 void sort_pairs(void)
 {
-    for (int i = 0; i < pair_count; i++)
+    pair temporary; //make an pair called temporary
+    for (int n = 0; n < pair_count * pair_count; n++) //repeat pair_count^2 times (because of the big O(worst case) in bubble sort)
     {
-        if (pairs[i].winner < pairs[i + 1].winner)
+        for (int i =  0; i < pair_count; i++)
         {
-            pairs[i].winner = pairs[i].winner;
+            for (int j = i + 1; j < pair_count; j++) //j is always bigger than i (bubble sort)
+            {
+                if (preferences[pairs[i].winner][pairs[i].loser] <= preferences[pairs[j].winner][pairs[j].loser])
+                //if the preferences of pair j is bigger than pair i, then save pair j as a temporary, copy pair i to j, and copy the temporary pair to i
+                //this way i and j has now switched
+                {
+                    //printf(">=%s is higher than %s with preference %i against %i\n", candidates[i], candidates[j], preferences[pairs[i].winner][pairs[i].loser], preferences[pairs[j].winner][pairs[j].loser]);
+                    //printf("before:%s\n", candidates[pairs[i].winner]);
+                    temporary.winner = pairs[j].winner;
+                    temporary.loser = pairs[j].loser;
+                    pairs[j].winner = pairs[i].winner;
+                    pairs[j].loser = pairs[i].loser;
+                    pairs[i].winner = temporary.winner;
+                    pairs[i].loser = temporary.loser;
+                    //printf("after: %s\n", candidates[pairs[i].winner]);
+                }
+            }
         }
-        else if (pairs[i].winner > pairs[i + 1].winner)
-        {
-            pairs[i+1].winner = pairs[i].winner;
-        }
-        
-        if (pairs[i].loser < pairs[i + 1].loser)
-        {
-            pairs[i].loser = pairs[i].loser;
-        }
-        else if (pairs[i].loser > pairs[i + 1].loser)
-        {
-            pairs[i + 1].loser = pairs[i].loser;
-        }
-        
-        printf("win%d\n",pairs[i].winner);
-        printf("loser%d\n",pairs[i].loser);
     }
+    
     // TODO
     return;
 }
