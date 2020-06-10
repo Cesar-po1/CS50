@@ -102,9 +102,9 @@ bool vote(int rank, string name, int ranks[])
 {
     for (int i = 0; i < candidate_count; i++)
     {
-        if (strcmp(candidates[i], name) == 0)
+        if (strcmp(candidates[i], name) == 0) //checks if name is correct
         {
-            ranks[rank] = i;
+            ranks[rank] = i; //adds the candidate to the selection
             return true;
         }
     }
@@ -120,7 +120,7 @@ void record_preferences(int ranks[])
         {
             if (i < j)
             {
-                preferences[ranks[i]][ranks[j]] ++;
+                preferences[ranks[i]][ranks[j]] ++; //times i over j
             }
         }
     }
@@ -147,7 +147,6 @@ void add_pairs(void)
                 pairs[pair_count].loser = i;
                 pair_count++;
             }
-            printf("pairs %d / %d \n",pairs[pair_count-1].winner,pairs[pair_count-1].loser );
         }
     }
     return;
@@ -164,8 +163,8 @@ void sort_pairs(void)
             for (int j = i + 1; j < pair_count; j++) //bubble sort
             {
                 if (preferences[pairs[i].winner][pairs[i].loser] <= preferences[pairs[j].winner][pairs[j].loser])
-                //if the preferences of pair j is bigger than pair i, then save pair j as a temporary, copy pair i to j, and copy the temporary pair to i
-                //this way i and j has now switched
+                    //if the preferences of pair j is bigger than pair i, then save pair j as a temporary, copy pair i to j, and copy the temporary pair to i
+                    //this way i and j has now switched
                 {
                     temporary.winner = pairs[j].winner;
                     temporary.loser = pairs[j].loser;
@@ -177,19 +176,12 @@ void sort_pairs(void)
             }
         }
     }
-    //another check: 
-    //for (int i = 0; i < pair_count; i++)
-    //{
-      //  printf("Pair_sort: Pair number %i is %s over %s with %i votes\n", i + 1, candidates[pairs[i].winner], candidates[pairs[i].loser], preferences[pairs[i].winner][pairs[i].loser]);
-    //}
-    // TODO
     return;
 }
 
 // Lock pairs into the candidate graph in order, without creating cycles
 void lock_pairs(void)
 {
-     // TODO
     for (int i = 0; i < pair_count; i++)
     {
         if (!check_cycle(pairs[i].winner, pairs[i].loser))
@@ -203,7 +195,6 @@ void lock_pairs(void)
 // Print the winner of the election
 void print_winner(void)
 {
-    // TODO
     for (int i = 0; i < candidate_count; i++)
     {
         bool source = true;
