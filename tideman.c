@@ -238,7 +238,14 @@ bool check_cycle(int n, int m)
     {
         if (locked[i][n] == true)
         {
-            check_cycle(i, m);
+            if (check_cycle(i, m))
+            {
+                return true;   
+            }
+            else 
+            {
+                return false;
+            }
         }
     }
     return false;
