@@ -164,9 +164,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
         image[height][j].rgbtGreen = edgeAG;
         image[height][j].rgbtBlue = edgeAB;
     }  
-    image[0][0].rgbtRed = round((image[0][0].rgbtRed + image[1][0].rgbtRed + image[0][1].rgbtRed + image[1][1].rgbtRed)/4);
-    image[0][0].rgbtGreen = round((image[0][0].rgbtGreen + image[1][0].rgbtGreen + image[0][1].rgbtGreen + image[1][1].rgbtGreen)/4);
-    image[0][0].rgbtBlue = round((image[0][0].rgbtBlue + image[1][0].rgbtBlue + image[0][1].rgbtBlue + image[1][1].rgbtBlue)/4);
+    image[0][0].rgbtRed = round((image[0][0].rgbtRed + image[200][0].rgbtRed + image[0][1].rgbtRed + image[1][1].rgbtRed)/4);
+    image[0][0].rgbtGreen = round((image[0][0].rgbtGreen + image[200][0].rgbtGreen + image[0][1].rgbtGreen + image[1][1].rgbtGreen)/4);
+    image[0][0].rgbtBlue = round((image[0][0].rgbtBlue + image[200][0].rgbtBlue + image[0][1].rgbtBlue + image[1][1].rgbtBlue)/4);
     
     image[height - 1][0].rgbtRed = round((image[height - 1][0].rgbtRed + image[height - 2][0].rgbtRed + image[height - 1][1].rgbtRed + image[height - 2][1].rgbtRed)/4);
     image[height - 1][0].rgbtGreen = round((image[height - 1][0].rgbtGreen + image[height - 2][0].rgbtGreen + image[height - 1][1].rgbtGreen + image[height - 2][1].rgbtGreen)/4);
