@@ -98,79 +98,60 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             cimage[i][j] = image[i][j];
         }
     }
-    for (int i = 1; i < height - 2; i++) //center blur
+    for (int i = 1; i < height - 1; i++) //center blur
     {
-        for (int j = 1; j < width - 2; j++)
+        for (int j = 1; j < width - 1; j++)
         {
-            int red = round((float)(image[i - 1][j - 1].rgbtRed + image[i - 1][j].rgbtRed + image[i - 1][j + 1].rgbtRed + image[i][j - 1].rgbtRed
+            cimage[i][j].rgbtRed = round((float)(image[i - 1][j - 1].rgbtRed + image[i - 1][j].rgbtRed + image[i - 1][j + 1].rgbtRed + image[i][j - 1].rgbtRed
             + image[i][j].rgbtRed + image[i][j + 1].rgbtRed + image[i + 1][j - 1].rgbtRed + image[i + 1][j].rgbtRed + image[i + 1][j + 1].rgbtRed) / 9);
             
-            int green = round((float)(image[i - 1][j - 1].rgbtGreen + image[i - 1][j].rgbtGreen + image[i - 1][j + 1].rgbtGreen + image[i][j - 1].rgbtGreen
+            cimage[i][j].rgbtGreen = round((float)(image[i - 1][j - 1].rgbtGreen + image[i - 1][j].rgbtGreen + image[i - 1][j + 1].rgbtGreen + image[i][j - 1].rgbtGreen
             + image[i][j].rgbtGreen + image[i][j + 1].rgbtGreen + image[i + 1][j - 1].rgbtGreen + image[i + 1][j].rgbtGreen + image[i + 1][j + 1].rgbtGreen) / 9);
             
-            int blue = round((float)(image[i - 1][j - 1].rgbtBlue + image[i - 1][j].rgbtBlue + image[i - 1][j + 1].rgbtBlue + image[i][j - 1].rgbtBlue
+            cimage[i][j].rgbtBlue = round((float)(image[i - 1][j - 1].rgbtBlue + image[i - 1][j].rgbtBlue + image[i - 1][j + 1].rgbtBlue + image[i][j - 1].rgbtBlue
             + image[i][j].rgbtBlue + image[i][j + 1].rgbtBlue + image[i + 1][j - 1].rgbtBlue + image[i + 1][j].rgbtBlue+ image[i + 1][j + 1].rgbtBlue) / 9);
             
-            cimage[i][j].rgbtRed = red;
-            cimage[i][j].rgbtGreen = green;
-            cimage[i][j].rgbtBlue = blue;
         }
     }
     for (int i = 1; i < height - 1; i++)
     {
-        int edgeIR = round((float)(image[i - 1][1].rgbtRed + image[i - 1][0].rgbtRed + image[i][0].rgbtRed + image[i][1].rgbtRed
+        cimage[i][0].rgbtRed = round((float)(image[i - 1][1].rgbtRed + image[i - 1][0].rgbtRed + image[i][0].rgbtRed + image[i][1].rgbtRed
             + image[i + 1][1].rgbtRed + image[i + 1][0].rgbtRed) / 6);
             
-        int edgeIG = round((float)(image[i - 1][1].rgbtGreen + image[i - 1][0].rgbtGreen + image[i][0].rgbtGreen + image[i][1].rgbtGreen
+        cimage[i][0].rgbtGreen = round((float)(image[i - 1][1].rgbtGreen + image[i - 1][0].rgbtGreen + image[i][0].rgbtGreen + image[i][1].rgbtGreen
             + image[i + 1][1].rgbtGreen + image[i + 1][0].rgbtGreen) / 6);
         
-        int edgeIB = round((float)(image[i - 1][1].rgbtBlue + image[i - 1][0].rgbtBlue + image[i][0].rgbtBlue + image[i][1].rgbtBlue
+        cimage[i][0].rgbtBlue = round((float)(image[i - 1][1].rgbtBlue + image[i - 1][0].rgbtBlue + image[i][0].rgbtBlue + image[i][1].rgbtBlue
             + image[i + 1][1].rgbtBlue + image[i + 1][0].rgbtBlue) / 6);
-            
-        cimage[i][0].rgbtRed = edgeIR;
-        cimage[i][0].rgbtGreen = edgeIG;
-        cimage[i][0].rgbtBlue = edgeIB;
-            
-        int edgeDR = round((float)(image[i - 1][width - 2].rgbtRed + image[i - 1][width - 1].rgbtRed + image[i][width - 1].rgbtRed + image[i][width - 2].rgbtRed
+
+        cimage[i][width - 1].rgbtRed = round((float)(image[i - 1][width - 2].rgbtRed + image[i - 1][width - 1].rgbtRed + image[i][width - 1].rgbtRed + image[i][width - 2].rgbtRed
             + image[i + 1][width - 2].rgbtRed + image[i + 1][width - 1].rgbtRed) / 6);
             
-        int edgeDG = round((float)(image[i - 1][width - 2].rgbtGreen + image[i - 1][width - 1].rgbtGreen + image[i][width - 1].rgbtGreen + image[i][width - 2].rgbtGreen
+        cimage[i][width - 1].rgbtGreen = round((float)(image[i - 1][width - 2].rgbtGreen + image[i - 1][width - 1].rgbtGreen + image[i][width - 1].rgbtGreen + image[i][width - 2].rgbtGreen
             + image[i + 1][width - 2].rgbtGreen + image[i + 1][width - 1].rgbtGreen) / 6);
         
-        int edgeDB = round((float)(image[i - 1][width - 2].rgbtBlue + image[i - 1][width - 1].rgbtBlue + image[i][width - 1].rgbtBlue + image[i][width - 2].rgbtBlue
+        cimage[i][width - 1].rgbtBlue = round((float)(image[i - 1][width - 2].rgbtBlue + image[i - 1][width - 1].rgbtBlue + image[i][width - 1].rgbtBlue + image[i][width - 2].rgbtBlue
             + image[i + 1][width - 2].rgbtBlue + image[i + 1][width - 1].rgbtBlue) / 6);
-            
-        cimage[i][width - 1].rgbtRed = edgeDR;
-        cimage[i][width - 1].rgbtGreen = edgeDG;
-        cimage[i][width - 1].rgbtBlue = edgeDB;
     }
     for (int j = 1; j < width - 1; j++)
     {
-        int edgeUR = round((float)(image[1][j - 1].rgbtRed + image[0][j - 1].rgbtRed + image[0][j].rgbtRed + image[1][j].rgbtRed
+        cimage[0][j].rgbtRed = round((float)(image[1][j - 1].rgbtRed + image[0][j - 1].rgbtRed + image[0][j].rgbtRed + image[1][j].rgbtRed
             + image[1][j + 1].rgbtRed + image[0][j + 1].rgbtRed) / 6);
             
-        int edgeUG = round((float)(image[1][j -  1].rgbtGreen + image[0][j - 1].rgbtGreen + image[0][j].rgbtGreen + image[1][j].rgbtGreen
+        cimage[0][j].rgbtGreen = round((float)(image[1][j -  1].rgbtGreen + image[0][j - 1].rgbtGreen + image[0][j].rgbtGreen + image[1][j].rgbtGreen
             + image[1][j + 1].rgbtGreen + image[0][j + 1].rgbtGreen) / 6);
             
-        int edgeUB = round((float)(image[1][j - 1].rgbtBlue + image[0][j - 1].rgbtBlue + image[0][j].rgbtBlue + image[1][j].rgbtBlue
+        cimage[0][j].rgbtBlue = round((float)(image[1][j - 1].rgbtBlue + image[0][j - 1].rgbtBlue + image[0][j].rgbtBlue + image[1][j].rgbtBlue
             + image[1][j + 1].rgbtBlue + image[0][j + 1].rgbtBlue) / 6);
             
-        cimage[0][j].rgbtRed = edgeUR;
-        cimage[0][j].rgbtGreen = edgeUG;
-        cimage[0][j].rgbtBlue = edgeUB;
-            
-        int edgeAR = round((float)(image[height - 1][j - 1].rgbtRed + image[height - 1][j].rgbtRed + image[height - 1][j + 1].rgbtRed + image[height][j - 1].rgbtRed
+        cimage[height][j].rgbtRed = round((float)(image[height - 1][j - 1].rgbtRed + image[height - 1][j].rgbtRed + image[height - 1][j + 1].rgbtRed + image[height][j - 1].rgbtRed
             + image[height][j].rgbtRed + image[height][j + 1].rgbtRed) / 6);
             
-        int edgeAG = round((float)(image[height - 1][j - 1].rgbtGreen + image[height - 1][j].rgbtGreen + image[height - 1][j + 1].rgbtGreen + image[height][j - 1].rgbtGreen
+        cimage[height][j].rgbtGreen = round((float)(image[height - 1][j - 1].rgbtGreen + image[height - 1][j].rgbtGreen + image[height - 1][j + 1].rgbtGreen + image[height][j - 1].rgbtGreen
             + image[height][j].rgbtGreen + image[height][j + 1].rgbtGreen) / 6);
         
-        int edgeAB = round((float)(image[height - 1][j - 1].rgbtBlue + image[height - 1][j].rgbtBlue + image[height - 1][j + 1].rgbtBlue + image[height][j - 1].rgbtBlue
+        cimage[height][j].rgbtBlue = round((float)(image[height - 1][j - 1].rgbtBlue + image[height - 1][j].rgbtBlue + image[height - 1][j + 1].rgbtBlue + image[height][j - 1].rgbtBlue
             + image[height][j].rgbtBlue + image[height][j + 1].rgbtBlue) / 6);
-            
-        cimage[height][j].rgbtRed = edgeAR;
-        cimage[height][j].rgbtGreen = edgeAG;
-        cimage[height][j].rgbtBlue = edgeAB;
     }  
     cimage[0][0].rgbtRed = round((float)(image[0][0].rgbtRed + image[0][1].rgbtRed + image[1][0].rgbtRed + image[1][1].rgbtRed)/4);
     cimage[0][0].rgbtGreen = round((float)(image[0][0].rgbtGreen + image[0][1].rgbtGreen + image[1][0].rgbtGreen + image[1][1].rgbtGreen)/4);
