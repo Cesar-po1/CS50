@@ -144,14 +144,14 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
         cimage[0][j].rgbtBlue = round((float)(image[1][j - 1].rgbtBlue + image[0][j - 1].rgbtBlue + image[0][j].rgbtBlue + image[1][j].rgbtBlue
             + image[1][j + 1].rgbtBlue + image[0][j + 1].rgbtBlue) / 6);
             
-        cimage[height - 1][j].rgbtRed = round((float)(image[height - 1][j - 1].rgbtRed + image[height - 1][j].rgbtRed + image[height - 1][j + 1].rgbtRed + image[height][j - 1].rgbtRed
-            + image[height][j].rgbtRed + image[height][j + 1].rgbtRed) / 6);
+        cimage[height - 1][j].rgbtRed = round((float)(image[height - 2][j - 1].rgbtRed + image[height - 2][j].rgbtRed + image[height - 2][j + 1].rgbtRed + image[height - 1][j - 1].rgbtRed
+            + image[height - 1][j].rgbtRed + image[height - 1][j + 1].rgbtRed) / 6);
             
-        cimage[height - 1][j].rgbtGreen = round((float)(image[height - 1][j - 1].rgbtGreen + image[height - 1][j].rgbtGreen + image[height - 1][j + 1].rgbtGreen + image[height][j - 1].rgbtGreen
-            + image[height][j].rgbtGreen + image[height][j + 1].rgbtGreen) / 6);
+        cimage[height - 1][j].rgbtGreen = round((float)(image[height - 2][j - 1].rgbtGreen + image[height - 2][j].rgbtGreen + image[height - 2][j + 1].rgbtGreen + image[height - 1][j - 1].rgbtGreen
+            + image[height - 1][j].rgbtGreen + image[height - 1][j + 1].rgbtGreen) / 6);
         
-        cimage[height - 1][j].rgbtBlue = round((float)(image[height - 1][j - 1].rgbtBlue + image[height - 1][j].rgbtBlue + image[height - 1][j + 1].rgbtBlue + image[height][j - 1].rgbtBlue
-            + image[height][j].rgbtBlue + image[height][j + 1].rgbtBlue) / 6);
+        cimage[height - 1][j].rgbtBlue = round((float)(image[height - 2][j - 1].rgbtBlue + image[height - 2][j].rgbtBlue + image[height - 2][j + 1].rgbtBlue + image[height - 1][j - 1].rgbtBlue
+            + image[height - 1][j].rgbtBlue + image[height - 1][j + 1].rgbtBlue) / 6);
     }  
     cimage[0][0].rgbtRed = round((float)(image[0][0].rgbtRed + image[0][1].rgbtRed + image[1][0].rgbtRed + image[1][1].rgbtRed)/4);
     cimage[0][0].rgbtGreen = round((float)(image[0][0].rgbtGreen + image[0][1].rgbtGreen + image[1][0].rgbtGreen + image[1][1].rgbtGreen)/4);
