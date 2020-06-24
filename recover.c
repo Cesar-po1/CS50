@@ -26,16 +26,13 @@ int main(int argc, char *argv[])
         int n = 0;
         int end = 0;
         
-        do
+        while (fread(buffer, sizeof(BYTE), 512, file)== 1)
         {
             if (buffer == NULL) // check if the memory is leak or not
             {
                 return 1;
             }
-            
-            end = fread(buffer, sizeof(BYTE), 512, file);
-            
-            
+    
             if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] & 0xf0) == 0xe0)
             {
                 if (n != 0)
@@ -53,22 +50,14 @@ int main(int argc, char *argv[])
                 
                 fwrite(buffer, sizeof(BYTE), 512, img);
                 n++;
-            
-                if (n == 49)
-                {
-                    printf("%i\n",end);
-                }
             }
+            
             else if (n != 0)
             {
                 fwrite(buffer, sizeof(BYTE), 512, img);
-                if (n == 49)
-                {
-                    printf("%i\n",end);
-                }
             }
         } 
-        while (end == 512);
+        
         fclose(file);
         fclose(img); 
         free(buffer); 
