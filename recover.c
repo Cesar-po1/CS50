@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
         int n = 0;
         int end = 0;
         
-        while (fread(buffer, sizeof(BYTE), 512, file)== 1)
+        while (fread(buffer, sizeof(BYTE), 512, file) == 512)
         {
             if (buffer == NULL) // check if the memory is leak or not
             {
