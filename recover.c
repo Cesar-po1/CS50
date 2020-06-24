@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
             }
         } 
         while (end == 512);
-    
+        fclose(img);
         free(buffer); 
     }
 }
