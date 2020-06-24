@@ -57,8 +57,6 @@ int main(int argc, char *argv[])
                 fwrite(buffer, sizeof(BYTE), 512, img);
             }
         } 
-        while (end == 512);
-        
         fclose(img); 
         free(buffer); 
         return 0;
