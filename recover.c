@@ -71,7 +71,6 @@ int main(int argc, char *argv[])
         fclose(file);
         fclose(img); 
         free(buffer); 
-        free(filename);
         return 0;
     }
 }
