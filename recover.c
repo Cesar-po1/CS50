@@ -23,17 +23,15 @@ int main(int argc, char *argv[])
         char filename[8];
         FILE *img = NULL;
         int n = 0;
-        int end = 0;
+        int end = 512;
         
-        do
+        if (buffer == NULL) // check if the memory is leak or not
         {
-            if (buffer == NULL) // check if the memory is leak or not
-            {
-                return 1;
-            }
-            
+            return 1;
+        }
+        while (end == 512)
+        {
             end = fread(buffer, sizeof(BYTE), 512, file);
-            
             
             if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] & 0xf0) == 0xe0)
             {
