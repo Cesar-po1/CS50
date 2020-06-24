@@ -34,6 +34,7 @@ int main(int argc, char *argv[])
             
             end = fread(buffer, sizeof(BYTE), 512, file);
             
+            
             if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] & 0xf0) == 0xe0)
             {
                 if (n != 0)
@@ -59,8 +60,12 @@ int main(int argc, char *argv[])
             }
         } 
         while (end == 512);
-        fclose(img); 
-        free(buffer); 
-        return 0;
+        if (end != 512)
+        {
+            fclose(img); 
+            free(buffer); 
+            return 0;
+        }
+        
     }
 }
