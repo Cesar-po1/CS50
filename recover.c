@@ -60,12 +60,9 @@ int main(int argc, char *argv[])
             }
         } 
         while (end == 512);
-        if (end != 512)
-        {
-            fclose(img); 
-            free(buffer); 
-            return 0;
-        }
         
+        fclose(img); 
+        free(buffer); 
+        return 0;
     }
 }
