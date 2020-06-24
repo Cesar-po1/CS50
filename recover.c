@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
         }
         while (end == 512)
         {
-            end = fread(buffer, sizeof(BYTE), 512, file);
+            end = fread(buffer, sizeof(BYTE) + 1, 512, file);
             
             if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] & 0xf0) == 0xe0)
             {
