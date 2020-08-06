@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <strings.h>
+#include <cs50.h>
 #include "dictionary.h"
 
 // Represents a node in a hash table
@@ -17,10 +18,12 @@ typedef struct node
 node;
 
 // Number of buckets in hash table
-const unsigned int N = (LENGTH+ 1) * 'z';
+const unsigned int N = (LENGTH + 1) * 'z';
 
 // Hash table
 node *table[N];
+
+int word_count = 0;
 
 // Returns true if word is in dictionary else false
 bool check(const char *word)
@@ -28,7 +31,7 @@ bool check(const char *word)
     int index = hash(word); //obtener index de palabra
     
     node *cursor = table[index]; //sets cursor to the index value
-    while (cursor != NULL)
+    while (!cursor)
     {
         if (strcasecmp(cursor->word, word) == 0) //check if word is in dict
         {
@@ -50,8 +53,6 @@ unsigned int hash(const char *word)
     return (sum % N);
 }
 
-int word_count = 0;
-
 // Loads dictionary into memory, returning true if successful else false
 bool load(const char *dictionary)
 {
@@ -64,24 +65,24 @@ bool load(const char *dictionary)
     char word[LENGTH + 1];
     while (fscanf(file, "%s", word) != EOF)
     {
-        node *n = malloc(sizeof(node));
-        if (!n)
+        node *n_n = malloc(sizeof(node));
+        if (!n_n)
         {
             return false;
         }
         
-        strcpy(n->word, word); //copies word to new location(node)
-        n->next = NULL; //empty node after the word
+        strcpy(n_n->word, word); //copies word to new location(node)
+        n_n->next = NULL; //empty node after the word
         
         int index = hash(word); //where the new word is located
         if(table[index] == NULL)
         {
-            table[index] = n; // if no pointer set, sets one
+            table[index] = n_n; // if no pointer set, sets one
         }
         else //if pointer has alredy a pointer
         {
-            n->next = table[index]; //sets index for location of pointer
-            table[index] = n; //new pointer for index
+            n_n->next = table[index]; //sets index for location of pointer
+            table[index] = n_n; //new pointer for index
         }
         word_count++;
     }
