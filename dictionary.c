@@ -18,7 +18,7 @@ typedef struct node
 node;
 
 // Number of buckets in hash table
-const unsigned int N = (LENGTH + 1) * 'z';
+const unsigned int N = (LENGTH +1)* 'z';
 
 // Hash table
 node *table[N];
@@ -31,7 +31,7 @@ bool check(const char *word)
     int index = hash(word); //obtener index de palabra
     
     node *cursor = table[index]; //sets cursor to the index value
-    while (!cursor)
+    while (cursor != NULL)
     {
         if (strcasecmp(cursor->word, word) == 0) //check if word is in dict
         {
@@ -65,24 +65,24 @@ bool load(const char *dictionary)
     char word[LENGTH + 1];
     while (fscanf(file, "%s", word) != EOF)
     {
-        node *n_n = malloc(sizeof(node));
-        if (!n_n)
+        node *new_node = malloc(sizeof(node));
+        if (!new_node)
         {
             return false;
         }
         
-        strcpy(n_n->word, word); //copies word to new location(node)
-        n_n->next = NULL; //empty node after the word
+        strcpy(new_node->word, word); //copies word to new location(node)
+        new_node->next = NULL; //empty node after the word
         
         int index = hash(word); //where the new word is located
         if(table[index] == NULL)
         {
-            table[index] = n_n; // if no pointer set, sets one
+            table[index] = new_node; // if no pointer set, sets one
         }
         else //if pointer has alredy a pointer
         {
-            n_n->next = table[index]; //sets index for location of pointer
-            table[index] = n_n; //new pointer for index
+            new_node->next = table[index]; //sets index for location of pointer
+            table[index] = new_node; //new pointer for index
         }
         word_count++;
     }
@@ -104,7 +104,7 @@ bool unload(void)
         node *head = table[i];
         node *cursor = head;
         node *tmp = head;
-        while (!cursor)
+        while (cursor != NULL)
         {
             cursor = cursor->next;
             free(tmp);
