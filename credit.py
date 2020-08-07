@@ -1,4 +1,4 @@
- # Credit pset 6 python
+# Credit pset 6 python
 import sys
 import math
 from cs50 import get_int
@@ -66,7 +66,7 @@ elif card_start == 51 or card_start == 52 or card_start == 53 or card_start == 5
         
         print("MASTERCARD")
         
-elif (card_start // 10) == 4: # checks requierments for visa
+elif (card_start // 10) == 4:  # checks requierments for visa
 
     if card_len == 13 or card_len == 14 or card_len == 15 or card_len == 16:
     
@@ -74,5 +74,5 @@ elif (card_start // 10) == 4: # checks requierments for visa
         
 else:  # any other case is a invalid card
     
-        print("INVALID")
-        exit(0)
+    print("INVALID")
+    exit(0)
