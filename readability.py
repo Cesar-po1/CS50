@@ -37,6 +37,6 @@ if grade >= 16:
 elif grade < 16 and grade >= 1:
     print("Grade", grade)  # final grade
 elif grade < 1:
-    print("Before grade 1")  # final grade
+    print("Before Grade 1")  # final grade
     
 
