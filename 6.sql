@@ -1,0 +1,1 @@
+SELECT AVG(rating) as averageOFratings FROM ratings JOIN movies ON movies.id = ratings.movie_id WHERE year = 2012 ;
