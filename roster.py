@@ -10,4 +10,4 @@ db = cs50.SQL("sqlite:///students.db")  # sets de data base
 rows = db.execute("SELECT * FROM students WHERE house = ? ORDER BY last, first", argv[-1])  # query
 for name in rows:
     print(name['first'] + ' ' + (name['middle'] + ' 'if name['middle'] !=
-                                    None else'') + name['last'] + ',', 'born', name['birth'])  # outpu
+                                   None else'') + name['last'] + ',', 'born', name['birth'])  # outpu
