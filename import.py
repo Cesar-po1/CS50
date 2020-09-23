@@ -23,5 +23,5 @@ with open(argv[1], 'r') as file:
         house = row['house']
         birth = row['birth']
         db.execute("INSERT INTO students (first, middle, last, house, birth) VALUES (?,?,?,?,?)",
-                    first, middle, last, house, birth)  # query
+                   first, middle, last, house, birth)  # query
         
